@@ -1,0 +1,33 @@
+{% set stickyID = {} %}
+{% if sticky_class %}
+  {% set equalitem = 'block-sticky-item' %}
+{% endif %}
+<div class="block-sticky {{sticky_class}}">
+  {% if sticky_class %}
+    <div class="sticky-post {{equalitem}}">
+      {% for item in stickypost %}
+        {% set stickyID = stickyID|merge({('_'~item.id):(item.id)}) %}
+        {% if item.thumbnail.src %}
+          <div class="post-picture">
+            <a href="{{item.link}}"><img src="{{item.thumbnail.src}}"/></a>
+          </div>
+        {% endif %}
+        <h5 class="post-title"><a href="{{ item.link }}">{{ item.title }}</a></h5>
+        <div class="post-content">
+          {{item.content|excerpt(15)}}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="related-post {{equalitem}}">
+    <ul>
+      {% for post in posts %}
+        {% if '_'~post.id not in stickyID|keys %}
+          <li><h5 class="post-title post-items"><a href="{{ post.link }}">{{ post.title }}</a></h5></li>
+        {% endif %}
+      {% endfor %}   
+    </ul>
+  </div>
+  
+</div>

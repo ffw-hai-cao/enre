@@ -1,0 +1,122 @@
+.block-slider {
+  background-color: $bg-feature;
+  display: none;
+  position: relative;
+
+  @include breakpoint(desktop) {
+    display: block;
+    margin-bottom: rem(-85px);
+  }
+
+  .slider--item {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    img {
+      visibility: hidden;
+    }
+  }
+
+  .slick-arrow {
+    @extend %remove-btn;
+    @include transition(all 0.5s ease);
+    background-color: rgba($bd-button, 0.7);
+    border: none;
+    color: $white;
+    cursor: pointer;
+    height: rem(40px);
+    margin-top: rem(-20px);
+    opacity: 0;
+    position: absolute;
+    text-indent: rem(-99999px);
+    top: 50%;
+    visibility: hidden;
+    width: rem(40px);
+    z-index: 1;
+
+    &:before {
+      float: left;
+      font-family: "FontAwesome";
+      font-size: rem(20px);
+      height: 100%;
+      line-height: rem(40px);
+      text-align: center;
+      text-indent: 0;
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: rgba($bd-button, 0.9);
+    }
+
+    &.slick-prev {
+      left: 0;
+
+      &:before {
+        content: "\f104";
+      }
+    }
+
+    &.slick-next {
+      right: 0;
+
+      &:before {
+        content: "\f105";
+      }
+    }
+  }
+
+  &:hover {
+    .slick-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.block-tuyen-sinh {
+  .slickvertical {
+    //height: rem(140px);
+
+    ul {
+      margin: 0 !important;
+    }
+  }
+
+  .slick-arrow {
+    width: rem(25px);
+    height: rem(25px);
+    position: absolute;
+
+  }
+
+  .view-post-title {
+    height: rem(200px);
+    margin: rem(0 10px);
+    overflow: hidden;
+    position: relative;
+
+    ul {
+      @include transition(all 0.5s ease);
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      -webkit-animation: moveSlideshow 60s linear infinite;
+      -moz-animation:    moveSlideshow 60s linear infinite;
+    }
+  }
+}
+
+.block-slide-gallery {
+  .block-slider {
+    margin: 0 !important;
+  }
+
+  .slider--item {
+    height: rem(180px);
+  }
+}

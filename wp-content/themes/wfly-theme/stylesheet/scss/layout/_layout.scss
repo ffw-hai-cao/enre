@@ -1,0 +1,44 @@
+body {
+  @include background-image(linear-gradient(rgba(#001dff, 0.27), #001dff));
+}
+
+.page-wrapper {
+
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 10%;
+
+  @include breakpoint(desktop) {
+    margin: 0 auto;
+    max-width: $container;
+    padding: rem(0 17px);
+  }
+}
+
+.page-inner {
+  @include box-shadow($black rem(0px 0px 7px 0px));
+  background-color: $white;
+  padding: rem(10px);
+  position: relative;
+}
+
+.main-content {
+  &.two-sidebar {
+    margin-bottom: rem(10px);
+
+    @include breakpoint(desktop) {
+      float: left;
+      margin-left: 25%;
+      margin-right: -100%;
+      padding: 0;
+      width: 50%;
+    }
+
+  }
+}
+
+main {
+  padding-top: rem(10px);
+}

@@ -1,0 +1,44 @@
+.footer {
+  background: $bg-footer;
+  border: rem(1px) solid $color-border;
+  padding: 1.25em;
+
+  p {
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+}
+
+.footer-panel {
+  font-size: rem(15px);
+  line-height: rem(25px);
+  padding-top: rem(45px);
+
+  .block-footer-panel {
+    margin-bottom: rem(30px);
+
+    @include breakpoint(desktop) {
+      float: left;
+      width: 33.333%;
+    }
+  }
+
+  .block-title {
+    color: $white;
+    font-size: rem(21px);
+    margin-bottom: rem(10px);
+    padding: 0;
+  }
+}
+
+.footer-bottom {
+  padding: rem(10px 0 30px);
+
+  .block-login {
+    text-align: center;
+
+    a {
+      font-size: 9px;
+    } 
+  }
+}

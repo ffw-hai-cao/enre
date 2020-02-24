@@ -1,0 +1,7 @@
+<div class="view-post-title ">
+  <ul>
+    {% for post in posts %}
+      <li><h5 class="post-title"><a href="{{ post.link }}">{{ post.title }}</a></h5></li>
+    {% endfor %}  
+  </ul>
+</div>

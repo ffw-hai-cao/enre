@@ -1,0 +1,33 @@
+{% extends 'layout.twig' %}
+
+{% block breakcrumb %}{% endblock %}
+
+{% for post in posts %}
+  {% block feature %}
+    <div class="feature clearfix">
+      {% if post.get_field('feature_banner_home') %}
+        <div class="block-feature-banner">
+          <a href="{{post.get_field('banner_link')}}" target="_blank"><img src="{{post.get_field('feature_banner_home')}}"></a>
+        </div>
+      {% endif %}
+      {% include 'block-slider.twig' %}
+    </div>
+  {% endblock %}
+
+  {% block content %}
+    {% for item in post.get_field('home_page_shortcode') %}
+      {% if item.acf_fc_layout == 'home_shortcode' %}
+        <div class="block-home-shortcode {{ item.home_shortcode_class }}">
+          {% if item.home_shortcode_title %}
+            <h2 class="block-title">{{ item.home_shortcode_title }}</h2>
+          {% endif %}
+          {% if item.home_shortcode_content %}
+            <div class="block-content">
+              {{ fn('shortcode', item.home_shortcode_content) }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endblock %}
+{% endfor %}

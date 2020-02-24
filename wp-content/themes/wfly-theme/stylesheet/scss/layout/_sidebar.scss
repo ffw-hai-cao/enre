@@ -1,0 +1,36 @@
+.sidebar-inner {
+  background-color: $bg-footer;
+}
+
+.sidebar-left {
+  @include breakpoint(desktop) {
+    float: left;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-right: rem(15px);
+    width: 25%;
+  }
+}
+
+.sidebar-right {
+  @include breakpoint(desktop) {
+    float: left;
+    margin-left: 75%;
+    margin-right: -100%;
+    padding-left: rem(15px);
+    width: 25%;
+  }
+}
+
+.block-sidebar {
+  margin-bottom: rem(30px);
+
+  .block-title {
+    @include background-image($bg-side-title);
+    color: $white;
+    font-size: rem($base-font-size - 2px);
+    line-height: 1.5;
+    margin-bottom: rem(10px);
+    text-transform: uppercase;
+  }
+}

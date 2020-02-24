@@ -1,0 +1,381 @@
+.menubar-wrapper {
+  margin-bottom: rem(10px);
+  position: relative;
+}
+
+#main-navigation {
+  background-color: $bg-feature;
+  position: relative;
+
+  @include breakpoint(desktop) {
+    @include background-image($bg-menu);
+    background-color: transparent;
+  }
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: rem(20px);
+  padding: rem(10px 0);
+  text-align: center;
+
+  .fa {
+    font-weight: 700;
+    font-size: rem(20px);
+    margin-right: rem(10px);
+  }
+
+  @include breakpoint(desktop) {
+    display: none !important;
+  }
+}
+
+.main-nav {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    list-style: none;
+    position: relative;
+
+    a {
+      color: $white;
+      display: block;
+      padding: rem(8px 15px);
+
+      &:hover {
+        background-color: lighten($color-link, 2%);
+      }
+    }
+
+    &.current-menu-item {
+      > a {
+        background-color: lighten($color-link, 5%);
+      }
+    }
+
+    ul.nav-drop {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        a {
+          &:before {
+            content: "\f101";
+            font-family: FontAwesome;
+            font-size: rem(14px);
+            margin-right: rem(5px);
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(desktop) {
+    display: block !important;
+    text-align: center;
+
+    &:after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    > li {
+      border-right: rem(1px) solid darken($color-secondary, 5%);
+      float: left;
+
+      &:before {
+        background-color: lighten($color-secondary, 5%);
+        content: "";
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: rem(1px);
+      }
+
+      > a {
+        padding: rem(7px 10px);
+        font-weight: 700;
+      }
+
+      &.menu-item-has-children {
+        > ul.nav-drop {
+          top: 80%;
+        }
+
+        &:hover {
+          > ul.nav-drop {
+            display: block;
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    li {
+      &:hover {
+        > a {
+          background-color: $bg-feature;
+        }
+      }
+    }
+
+    ul.nav-drop {
+      @include transition(all 0.3s ease);
+      background-color: $bg-feature;
+      border: rem(1px) solid $color-link;
+      left: rem(-0.5px);
+      opacity: 0;
+      position: absolute;
+      text-align: left;
+      top: 0;
+      visibility: hidden;
+      width: rem(200px);
+      z-index: 9999;
+
+      li {
+        border-top: rem(1px) solid $color-link;
+
+        &:first-of-type {
+          border-top: none;
+        }
+
+        a {
+          padding: rem(5px 10px);
+          line-height: 1.5;
+
+          &:before {
+            content: "";
+            display: none;
+          }
+        }
+
+        &:hover {
+          > a {
+            background-color: lighten($color-link, 5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+#searchform {
+  margin: 0;
+  position: relative;
+  width: 280px;
+
+  .search-input {
+    line-height: 1.5;
+    margin: 0;
+    padding-right: rem(50px);
+    width: 100%;
+  }
+
+  .search-submit {
+    @include border-radius(0);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-indent: rem(-9999px);;
+    top: 0;
+    width: rem(40px);
+
+    i {
+      float: left;
+      text-indent: 0;
+      width: 100%;
+      color: white;
+    }
+  }
+}
+
+.block-search {
+  .toggle-search {
+    color: $white;
+    cursor: pointer;
+    float: right;
+    height: rem(32px);
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-indent: rem(-9999px);
+    top: 0;
+    width: rem(32px);
+
+    &:before {
+      background: transparent;
+      content: "\f002";
+      float: left;
+      font-family: "FontAwesome";
+      height: 100%;
+      line-height: rem(32px);
+      padding-right: 0;
+      text-align: center;
+      text-indent: 0;
+      width: 100%;
+      z-index: 9;
+    }
+
+    &.close:before {
+      content: "\f00d";
+    }
+  }
+
+  .search {
+    display: none;
+    float: right;
+  }
+}
+
+.block-menu-vertical {
+  font-size: rem($base-font-size - 2px);
+  position: relative;
+  z-index: 20;
+
+  ul.menu {
+    border: rem(1px) solid $bluedark;
+    line-height: 1.5;
+    list-style: none;
+    margin: 0 !important;
+
+    li.menu-item-has-children {
+      > a {
+        &:before {
+          content: "\f0da";
+          font-family: "FontAwesome";
+          font-size: rem(14px);
+          line-height: 1.6;
+          position: absolute;
+          right: rem(10px);
+        }
+      }
+    }
+
+    > li {
+      border-top: rem(1px) solid $bluedark;
+      list-style: none;
+      position: relative;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      > a {
+        @include background-image($bg-menu-ver);
+        color: $color-primary;
+        display: block;
+        padding: rem(3px 10px);
+        position: relative;
+        text-transform: uppercase;
+        z-index: 1;
+      }
+
+      &:hover > a , > a:hover {
+        @include background-image($bg-menu);
+        color: $white;
+      }
+
+      &:hover {
+        > ul.sub-menu {
+          @include opacity(1);
+          left: 100%;
+          visibility: visible;
+        }
+      }
+    }
+
+    ul.sub-menu {
+      @include opacity(0);
+      @include transition-duration(0.2s);
+      @include transition-property(all);
+      background-color: lighten($blue, 4%);
+      border: rem(1px) solid $bluedark;
+      left: 90%;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+      width: rem(200px);
+
+      > li {
+        border-top: rem(1px) solid $bluedark;
+        list-style: none;
+        position: relative;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        > a {
+          color: white;
+          display: block;
+          padding: rem(3px 10px);
+        }
+
+        &:hover > a, > a:hover {
+          background-color: $blue;
+        }
+      }
+    }
+  }
+}
+
+.block-menu-lien-ket {
+  ul.menu {
+    margin: 0;
+    list-style: none;
+
+    li {
+      list-style: none;
+      margin-top: rem(10px);
+
+      &:first-child {
+        margin: 0;
+      }
+
+      &.bo-giao-duc {
+        > a {
+          background: url($theme-image + "theme-imgs/bo-giao-duc-va-da-tao.jpg") no-repeat scroll center center transparent;
+          height: rem(60px);
+        }
+      }
+
+      &.so-giao-duc {
+        > a {
+          background: url($theme-image + "theme-imgs/so-giao-duc-dao-tao-ha-hoi.jpg") no-repeat scroll center center transparent;
+          height: rem(70px);
+        }
+      }
+
+      &.chinh-phu{
+        > a {
+          background: url($theme-image + "theme-imgs/chinhphu.jpg") no-repeat scroll center center transparent;
+          height: rem(100px);
+        }
+      }
+
+      &.van-ban {
+        > a {
+          background: url($theme-image + "theme-imgs/van-ban-phap-luat.png") no-repeat scroll center center transparent;
+          height: rem(70px);
+        }
+      }
+
+      a {
+        background-size: cover !important;
+        display: block;
+        text-indent: rem(-99999px);
+      }
+    }
+  }
+}

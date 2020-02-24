@@ -1,0 +1,6 @@
+{% block searchform %}
+  <form role="search" method="get" id="searchform" class="search" action="{{site.url}}">
+    <input class="search-input" type="text" value="{{function('get_search_query')}}" name="s" id="s" placeholder="Search">
+    <button type="submit" id="searchsubmit" class="search-submit" value="Search" class="button postfix"><i class="fa fa-search"></i>Search</button>
+  </form>
+{% endblock %}

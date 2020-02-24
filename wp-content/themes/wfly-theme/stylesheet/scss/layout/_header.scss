@@ -1,0 +1,61 @@
+header.header {
+  overflow: hidden;
+  padding: rem(18px 0);
+}
+
+.branding {
+  float: left;
+  width: 17%;
+}
+
+.site-image {
+  text-align: center;
+}
+
+.block-header {
+  float: left;
+  width: 55%;
+
+  h2 {
+    @include text-shadow($white rem(1px 1px 1px));
+  }
+
+  p {
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+}
+
+.feature {
+  margin-bottom: rem(10px);
+  line-height: 0;
+
+  .block-slider {
+    @include breakpoint(desktop) {
+      float: left;
+      margin-left: 25%;
+      margin-right: -100%;
+      max-height: rem(337px);
+      overflow: hidden;
+      padding: 0;
+      width: 75%;
+
+      .slider--item {
+        height: rem(337px);
+      }
+    }
+  }
+}
+
+.block-feature-banner {
+  display: none;
+
+  @include breakpoint(desktop) {
+    display: block;
+    float: left;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-right: rem(15px);
+    width: 25%;
+  }
+}

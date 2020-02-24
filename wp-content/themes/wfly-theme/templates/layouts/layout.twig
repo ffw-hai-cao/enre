@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="{{site.charset}}" />
+    {% if function('is_home') %}
+      <title>{{site.name}} - {{site.description}}</title>
+    {% else %}
+      <title>{{ function('bloginfo') }} {{ function('wp_title') }}</title>
+    {% endif %}
+    <meta name="description" content="{{site.description}}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="{{site_favicon}}" />
+    <link rel="pingback" href="{{site.pingback_url}}" />
+    {{function('wp_head')}}
+  </head>
+  <body class="{{body_class}}" data-template="base.twig">
+    <div class="page-wrapper">
+      <div class="{% if function('is_page') %}{{ page_layout }} {% else %}container{% endif %}">
+        <div class="page-inner">
+          {% block header %}
+            {% include 'header.twig' %}
+          {% endblock %}
+          
+          <div class="menubar-wrapper clearfix">
+            {% block navigation %}
+            {% include 'navigation.twig' %}
+            {% endblock %}
+            
+            <div class="block-search">
+              <span class="toggle-search open">toggle search</span>
+              {% include 'searchform.twig' %}
+            </div>
+          </div>
+
+          {% block feature %}
+          {% endblock %}
+
+          <main role="main" class="clearfix">
+            {% block breakcrumbs %}
+              {% set _breakcrumb = block('breakcrumb') %}
+              {% if _breakcrumb is not empty %}
+                <div class="breakcrumb">
+                  {{ _breakcrumb|raw }}
+                </div>
+              {% endif %}
+            {% endblock %}
+            
+            <div class="main">
+              <div class="main-content {% if block('sidebar') %}two-sidebar{% endif %}">
+                {% block content %}
+                  <div class="content-wrapper">
+                    {{context}}
+                  </div>
+                {% endblock %}
+              </div>
+
+              {% if block('sidebar') %}
+                <section class="sidebar-wrapper">
+                  {% block sidebar %}
+                    <aside class="sidebar-left">
+                      <div class="sidebar-inner">
+                        {% include 'sidebar-left.twig' %}  
+                      </div>
+                    </aside>
+                    <aside class="sidebar-right">
+                      <div class="sidebar-inner">
+                        {% include 'sidebar-right.twig' %}
+                      </div>
+                    </aside>
+                  {% endblock %}
+                </section>
+              {% endif %}
+            </div>
+          </main>
+
+          {% block footer %}
+            {% include 'footer.twig' %}
+            {{ function('wp_footer') }}
+          {% endblock %}
+        </div>
+      </div>
+
+      {% block footer_scripts %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

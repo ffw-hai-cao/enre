@@ -1,0 +1,26 @@
+{% for item in fn('acfwidget', 'acf_sidebars', 'sidebar_widget-3') %}
+  {% if item.acf_fc_layout == 'acf_sidebar_shortcode' %}
+    <div class="block-sidebar {{ item.acf_shortcode_add_class }}">
+      {% if item.acf_shortcode_title %}
+        <h2 class="block-title">{{ item.acf_shortcode_title }}</h2>
+      {% endif %}
+      {% if item.acf_shortcode_content %}
+        <div class="block-content">
+          {{ shortcode(item.acf_shortcode_content) }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if item.acf_fc_layout == 'acf_sidebar' %}
+    <div class="block-sidebar {{ item.acf_sidebar_add_class }}">
+      {% if item.acf_sidebar_title %}
+        <h2 class="block-title">{{ item.acf_sidebar_title }}</h2>
+      {% endif %}
+      {% if item.acf_sidebar_content %}
+        <div class="block-content">
+          {{ item.acf_sidebar_content }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}

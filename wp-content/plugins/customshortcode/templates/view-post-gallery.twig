@@ -1,0 +1,20 @@
+<div class="block-slider cf_block-slider">
+{% for post in posts %}
+  {% for item in post.get_field('videos_and_images') %}
+    {% if item.acf_fc_layout == 'images_gallery' %}
+      {% for image in item.gallery_image_field %}
+        <div class="slider--item" style="background-image: url('{{ image.url }}')">
+          <img src="{{image.url}}">
+        </div>
+      {% endfor %}
+    {% elseif item.acf_fc_layout == 'videos_gallery' %}
+      <div class="slider--item" style="background-image: url('{{ item.gallery_video_thumbnail }}')">
+        <a class="popup-login" href="#video-popup"><img src="{{ item.gallery_video_thumbnail }}"></a>
+        <div id="video-popup" class="video-popup">
+          {{item.gallery_video_url_field}}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>

@@ -1,0 +1,33 @@
+%btn,
+.btn {
+  @include background-image(linear-gradient($blue, $bluedark));
+  @include border-radius(rem(3px));
+  @include text-shadow(rem(1px 1px 1px) $black);
+  background-color: $bg-button;
+  border: rem(1px) solid $bd-button;
+  color: $white;
+  cursor: pointer;
+  padding: rem(7px 12px);
+
+  &:hover {
+    @include background-image(linear-gradient($bluedark, $blue));
+  }
+}
+
+%remove-btn,
+.remove-btn {
+  background: transparent;
+  @include border-radius(0);
+  @include text-shadow(rem(0px 0px 0px) transparent);
+  border: none;
+  color: inherit;
+  padding: inherit;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+button {
+  @extend %btn;
+}

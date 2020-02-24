@@ -1,0 +1,44 @@
+.block-count-perday {
+  .counter-total {
+    @include iceberg;
+    color: $white;
+    font-size: rem(25px);
+    line-height: 1.5;
+    text-align: center;
+
+    span {
+      background-color: $gray-3e;
+      display: inline-block;
+      padding: rem(0px 7px);
+    }
+  }
+
+  ul.counter-list {
+    line-height: 1.5;
+    margin: 0;
+    padding: rem(10px);
+
+    li {
+      list-style: none;
+
+      &:before {
+        content: '\f007';
+        font-family: "FontAwesome";
+        margin-right: rem(5px);
+      }
+
+      span {
+        float: right;
+      }
+    }
+
+    $color-icons: (aqua,blue,pink,chartreuse,orange,navy,plum,yellow,tomato,violet,snow,red,gray,black,brown,indigo,lime,olivedrab,skyblue,peru);
+    @for $i from 1 through 20 {
+      li:nth-of-type(#{$i}) {
+        &:before {
+          color: nth($color-icons, $i);
+        }
+      }
+    }
+  }
+}

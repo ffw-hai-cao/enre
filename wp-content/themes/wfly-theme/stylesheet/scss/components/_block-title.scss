@@ -1,0 +1,31 @@
+%title {
+  @include arial;
+  @include background-image($bg-title);
+  color: $color-text;
+  display: block;
+  font-size: rem($base-font-size + 2px);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 0;
+  padding: rem(2px 10px);
+
+  a {
+    color: $color-link;
+  }
+}
+
+.post-detail-title,
+.comment-reply-title,
+.block-title {
+  @extend %title;
+}
+
+.post-detail-title {
+  font-size: rem(42px);
+}
+
+.block-home-shortcode {
+  .block-title {
+    margin-bottom: rem(10px);
+  }
+}

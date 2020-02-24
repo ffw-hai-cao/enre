@@ -1,0 +1,7 @@
+<div class="block-slider cf_block-slider">
+  {% for image in object_image %}
+    <div class="slider--item" style="background-image: url('{{ image.url }}')">
+      <img src="{{ image.url }}" />
+    </div>
+  {% endfor %}
+</div>

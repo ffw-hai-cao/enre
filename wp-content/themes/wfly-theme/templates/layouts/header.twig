@@ -1,0 +1,28 @@
+{% block header %}
+  {% set header_background %}
+    background-image: url({{ fn('acfwidget', 'header_banner', 'header_widget-2') }}); 
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    background-color: transparent; 
+    background-size: cover;
+  {% endset %}
+  <header id="header" class="header" style="{{ header_background }}">
+    <div class="branding">
+      <div class="site-image">
+        {% if function('has_custom_logo') %}
+          {{function('the_custom_logo')}}
+        {% else %}
+          <a href="{{ site.url }}">
+            <img alt="{{ site.name }}" class="site-logo" src="{{ site_logo }}">
+          </a>
+        {% endif %}
+      </div>
+      <p class="site-title hidden">
+        <a href="{{ site.url }}" rel="home">{{ site.name }}</a>
+      </p>
+    </div>
+    <div class="block-header">
+      {{ fn('acfwidget', 'header_text', 'header_widget-2') }}
+    </div>
+  </header>
+{% endblock %}
