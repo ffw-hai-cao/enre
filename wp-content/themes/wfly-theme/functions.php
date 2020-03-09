@@ -4,6 +4,9 @@
  *  URL: wordfly.com | @wordfly
  *  Custom functions, support, custom post types and more.
  */
+ini_set('log_errors','On');
+ini_set('display_errors','On');
+ini_set('error_reporting', E_ALL );
 
 // WP libs include
 require_once('wp-libs/wp-libs-include.php');

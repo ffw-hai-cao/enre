@@ -124,23 +124,29 @@ function create_view_posts($attrs) {
         'posts_per_page'  => $per_page,
         'cat'             => $cat_id,
         'posts_per_page'  => 1,
-        'meta_key'        => '_cmb_sticky_post',
+        'meta_key'        => '_cmb2_sticky_post',
         'meta_value'      => 'on',
         'meta_compare'    => '=',
       );
 
       $stickypost = Timber::get_posts($args_sticky);
 
-      $sticky_id = $stickypost[0]->ID;
-      $sticky_stt = $stickypost[0]->_cmb_sticky_post;
-      if (in_array($sticky_id, $total_id)){
-        $args['posts_per_page'] = $per_page + 1;
-      }
-      if ($sticky_stt == 'on') {
-        $context['sticky_class'] = 'block-has-sticky';
-      }
+      if ($stickypost) {
+        $sticky_id = $stickypost[0]->ID;
+        $sticky_stt = $stickypost[0]->_cmb2_sticky_post;
+        if (in_array($sticky_id, $total_id)){
+          $args['posts_per_page'] = $per_page + 1;
+        }
+        if ($sticky_stt == 'on') {
+          $context['sticky_class'] = 'block-has-sticky';
+        }
 
-      $context['stickypost'] = $stickypost;
+        $context['stickypost'] = $stickypost;
+      } else {
+        $args['posts_per_page'] = $per_page + 1;
+        $context['sticky_class'] = null;
+        $context['stickypost'] = null;
+      }
     }
 
     $posts = Timber::get_posts($args);

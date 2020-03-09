@@ -22,4 +22,3 @@ function cld_plugin_scripts() {
   wp_register_script('cldscript', plugin_dir_url( __FILE__ ) . 'js/script.js', array('jquery'));
   wp_enqueue_script('cldscript');
 }
-?>

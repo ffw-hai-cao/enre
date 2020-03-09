@@ -26,4 +26,3 @@ function cf_create_post_types() {
   );
 }
 add_action( 'init', 'cf_create_post_types' );
-?>

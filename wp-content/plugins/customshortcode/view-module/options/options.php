@@ -49,4 +49,3 @@ function cmb2_sample_metaboxes() {
   ));
 
 }
-?>

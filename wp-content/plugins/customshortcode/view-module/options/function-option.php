@@ -19,4 +19,3 @@ function cf_post_taxonomy() {
 
   return $cat;
 }
-?>

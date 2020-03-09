@@ -79,4 +79,3 @@ function create_view_posts($attrs) {
   return $content;
   wp_reset_postdata();
 }
-?>
