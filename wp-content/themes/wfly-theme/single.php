@@ -14,5 +14,5 @@ $context['thumbnail_option'] = framework_post('disable_thumbnail');
 $context['sticky_option'] = framework_post('sticky_post');
 $post = new TimberPost();
 $context['post'] = $post;
-$context["acf"] = get_field_objects($data["post"]->ID);
+//$context["acf"] = get_field_objects($data["post"]->ID);
 Timber::render( 'single.twig', $context );
